@@ -1,19 +1,14 @@
 'use client';
 
 import { Bookmark } from '../types';
-import ThemeToggle from './ThemeToggle';
 
 interface TopBarProps {
   title: string;
-  isDark: boolean;
-  onToggleTheme: () => void;
   onAddBookmark: () => void;
 }
 
 export default function TopBar({
   title,
-  isDark,
-  onToggleTheme,
   onAddBookmark,
 }: TopBarProps) {
   return (
@@ -26,7 +21,6 @@ export default function TopBar({
         >
           + Add
         </button>
-        <ThemeToggle isDark={isDark} onToggle={onToggleTheme} />
       </div>
     </div>
   );
