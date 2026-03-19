@@ -1,5 +1,4 @@
 'use client';
-
 import { Bookmark } from '../types';
 import Link from 'next/link';
 
@@ -22,7 +21,6 @@ export default function BookmarkCard({
 }: BookmarkCardProps) {
   const handleCopyUrl = () => {
     navigator.clipboard.writeText(bookmark.url);
-    // Could add a toast notification here
   };
 
   const formatDate = (dateString: string) => {

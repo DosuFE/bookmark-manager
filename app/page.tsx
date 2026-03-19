@@ -23,7 +23,7 @@ export default function Home() {
 
   // Load data on mount
   useEffect(() => {
-    fetch('/api/bookmarks')
+    fetch('http://localhost:5000/bookmark')
       .then((res) => res.json())
       .then((data) => setBookmarks(data))
       .catch(() => console.error('Failed to load bookmarks'));
@@ -112,8 +112,9 @@ export default function Home() {
     setShowAddForm(false);
   };
 
-  const handleDeleteBookmark = (id: string) => {
-    setBookmarks(bookmarks.filter((b) => b.id !== id));
+  const handleDeleteBookmark = async (id: string) => {
+    await fetch(`http://localhost:5000/bookmark/${id}`, { method: 'DELETE' });
+    setBookmarks((prev) => prev.filter((b) => b.id !== id));
   };
 
   const handleArchiveBookmark = (id: string) => {
