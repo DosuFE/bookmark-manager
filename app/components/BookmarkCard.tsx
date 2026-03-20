@@ -76,7 +76,7 @@ export default function BookmarkCard({
       </div>
 
       {/* Tags */}
-      {bookmark.tags.length > 0 && (
+      {Array.isArray(bookmark.tags) && bookmark.tags.length > 0 && (
         <div className="px-4 py-2 border-t border-gray-200 dark:border-gray-700 flex flex-wrap gap-2">
           {bookmark.tags.map((tag) => (
             <span

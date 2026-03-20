@@ -5,7 +5,7 @@ import { Bookmark } from '../types';
 
 interface AddBookmarkFormProps {
   bookmark: Bookmark | null;
-  onSubmit: (bookmark: Bookmark) => void;
+  onSubmit: (bookmark: Omit<Bookmark, 'id'> | Bookmark) => void;
   onClose: () => void;
 }
 
@@ -38,8 +38,7 @@ export default function AddBookmarkForm({
       .map((tag) => tag.trim())
       .filter((tag) => tag.length > 0);
 
-    const newBookmark: Bookmark = {
-      id: bookmark?.id || Date.now().toString(),
+    const newBookmark: Omit<Bookmark, 'id'> = {
       title,
       description,
       url,
@@ -52,7 +51,12 @@ export default function AddBookmarkForm({
       pinned: bookmark?.pinned || false,
     };
 
-    onSubmit(newBookmark);
+    let bookmarkToSubmit: Omit<Bookmark, 'id'> | Bookmark = newBookmark;
+    if (bookmark) {
+      bookmarkToSubmit = { ...newBookmark, id: bookmark.id };
+    }
+
+    onSubmit(bookmarkToSubmit);
     setLoading(false);
   };
 

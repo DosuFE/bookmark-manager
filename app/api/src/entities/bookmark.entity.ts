@@ -14,8 +14,8 @@ export class Bookmarks {
   @Column()
   url: string;
 
-  @Column()
-  tags: string;
+  @Column('simple-array', { nullable: true })
+  tags: string[];
 
   @Column()
   favicon: string;
@@ -29,8 +29,8 @@ export class Bookmarks {
   @Column()
   dateAdded: Date;
 
-  @Column({ default: false })
-  archvied: boolean;
+  @Column({ name: 'archvied', default: false })
+  archived: boolean;
 
   @Column({ default: false })
   pinned: boolean;

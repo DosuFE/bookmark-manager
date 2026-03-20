@@ -1,4 +1,4 @@
-import { IsArray, IsBoolean, IsNumber, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateBookmarkDto {
   @IsString()
@@ -12,7 +12,8 @@ export class CreateBookmarkDto {
 
   @IsArray()
   @IsString({ each: true })
-  tags: string;
+  @IsOptional()
+  tags?: string[];
 
   @IsString()
   favicon: string;
