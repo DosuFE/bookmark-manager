@@ -1,5 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { Bookmarks } from './src/entities/bookmark.entity';
+import { Bookmarks } from './entities/bookmark.entity';
 
 export const pgConfig: TypeOrmModuleOptions = {
   type: 'postgres',
